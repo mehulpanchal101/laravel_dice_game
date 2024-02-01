@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <h1>
+                <span class="badge badge-secondary badge-warning"></span>
+            </h1>
+        </div>
+        <div class="col-6">
+            <h1>
+                <span class="badge badge-secondary badge-info">User Information Screen</span>
+            </h1>
+        </div>
+        <div class="col-3">
+            <h5>Export</h5>
+            <div class="btn-group">
+                <button type="button" class="btn btn-success" (click)="getExcelFile()">Excel</button>
+                <button type="button" class="btn btn-secondary" (click)="getPDFFile()">PDF</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Nickname</th>
+                <th>Score</th>
+                <th>Time Taken</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of data.result">
+                <td>{{row.user.nickname}}</td>
+                <td>{{row.score}}</td>
+                <td>{{row.time_taken}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

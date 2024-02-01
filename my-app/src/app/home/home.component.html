@@ -1,0 +1,66 @@
+<div class="container">
+    <ng-container *ngIf="isAdmin">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1>Home</h1>
+                <p>You're logged in</p>
+                <p>Your role is: <strong>{{currentUser.role}}</strong>.</p>
+                <p>This page can be accessed by all authenticated users.</p>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="!isAdmin">
+        <div class="jumbotron text-center">
+            <div *ngIf="hidePlay()" class="container">
+                <div class="row" style="color: white;">
+                    <div class="col-3  bg-warning">
+                        <h1 *ngIf="hidePlay()">
+                            <span class="badge badge-secondary badge-warning">Round {{played}}/{{round}}</span>
+                        </h1>
+                    </div>
+                    <div class="col-6 bg-info">
+                        <h1 *ngIf="hidePlay()">
+                            <span class="badge badge-secondary badge-info">{{gameName}}</span>
+                        </h1>
+                    </div>
+                    <div class="col-3  bg-warning">
+                        <h1 *ngIf="hidePlay()">
+                            <span class="badge badge-secondary badge-warning">{{transform(timeTaken)}}</span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 offset-md-3" *ngIf="!gameloading">
+                    <h1 *ngIf="!hidePlay()">
+                        <span class="badge badge-secondary badge-info">Thank you</span>
+                    </h1>
+                    <ng-container *ngIf="hidePlay()">
+                        <div class="dice">
+                            <ol class="die-list even-roll" data-roll="1" id="die-1">
+                                <li class="die-item" data-side="1" style="background-image: url('../../assets/1.png');">                                    
+                                </li>
+                                <li class="die-item" data-side="2" style="background-image: url('../../assets/2.png');">                                    
+                                </li>
+                                <li class="die-item" data-side="3" style="background-image: url('../../assets/3.png');">                                    
+                                </li>
+                                <li class="die-item" data-side="4" style="background-image: url('../../assets/4.png');">                                    
+                                </li>
+                                <li class="die-item" data-side="5" style="background-image: url('../../assets/5.png');">                                    
+                                </li>
+                                <li class="die-item" data-side="6" style="background-image: url('../../assets/6.png');">                                    
+                                </li>
+                            </ol>
+                        </div>
+                    </ng-container>
+                    <button *ngIf="hidePlay()" [disabled]="isProsess" type="button" (click)="rollDice()"
+                        class="btn btn-warning">Random</button>
+                    <h1 *ngIf="!hidePlay()">
+                        <span class="badge badge-secondary badge-success">Your score is
+                            {{score}}</span>
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</div>
